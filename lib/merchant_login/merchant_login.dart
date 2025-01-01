@@ -7,7 +7,9 @@ import 'package:gaytri_mobile/merchant_login/state.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MerchantLogin extends StatefulWidget {
-  const MerchantLogin({super.key});
+  final String state;
+  final String city;
+  const MerchantLogin({super.key, required this.state, required this.city});
 
   @override
   State<MerchantLogin> createState() => _MerchantLoginState();
@@ -15,16 +17,60 @@ class MerchantLogin extends StatefulWidget {
 
 class _MerchantLoginState extends State<MerchantLogin> {
   XFile? _shopImage;
+  String selectedState = "Select state";
 
-  Future<void> _pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final image = await _picker.pickImage(source: ImageSource.gallery);
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
 
-    if (image != null) {
+    if (pickedFile != null) {
       setState(() {
-        _shopImage = image;
+        _shopImage = File(pickedFile.path) as XFile?;
       });
     }
+    Navigator.pop(context); // Close the bottom sheet
+  }
+
+  void _showImagePickerOptions() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.photo_library, size: 30),
+                    color: Color(0xFF17A589),
+                    onPressed: () => _pickImage(ImageSource.gallery),
+                  ),
+                  Text(
+                    'Gallery',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.camera_alt, size: 30),
+                    color: Color(0xFF17A589),
+                    onPressed: () => _pickImage(ImageSource.camera),
+                  ),
+                  Text(
+                    'Camera',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -120,28 +166,43 @@ class _MerchantLoginState extends State<MerchantLogin> {
               SizedBox(
                 height: 20,
               ),
-              TextField(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => StateSearchApp()));
-                },
-                readOnly: true,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFebfaf7),
-                    hintText: "Select state",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF17A589),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xFFebfaf7), // Background color
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                      color: Color(0xFF17A589), // Border color
+                      width: 1 // Border width
                       ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF17A589),
+                ),
+                padding: EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 12), // Padding inside the container
+                child: GestureDetector(
+                    onTap: () {
+                      // Navigate to the StateSearchApp screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StateSearchApp(
+                            onStateSelected: (state) {
+                              // Update selected state when a state is selected from StateSearchApp
+                              setState(() {
+                                selectedState = state;
+                              });
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      widget.state != null && widget.state.isNotEmpty
+                          ? widget.state
+                          : "Select state", // Check if state is null or empty
+                      style: TextStyle(
+                        color: Colors.black54, // Text color
+                        fontSize: 16, // Font size
                       ),
                     )),
               ),
@@ -149,15 +210,28 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 height: 10,
               ),
               TextField(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CitySearchScreen()));
+                onTap: () async {
+                  // Navigate to CitySearchScreen and await the result
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CitySearchScreen(
+                        onCitySelected:
+                            (String city) {}, // Unused in this context
+                      ),
+                    ),
+                  );
+
+                  // Update the selected city if a result is returned
+                  // if (result != null) {
+                  //   setState(() {
+                  //     selectedCity = result;
+                  //   });
+                  // }
                 },
                 readOnly: true,
                 decoration: InputDecoration(
-                    hintText: "Select city",
+                    hintText: "Select City",
                     filled: true,
                     fillColor: Color(0xFFebfaf7),
                     enabledBorder: OutlineInputBorder(
@@ -297,7 +371,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               Column(
                 children: [
                   GestureDetector(
-                    onTap: _pickImage,
+                    onTap: _showImagePickerOptions,
                     child: Container(
                       height: 150,
                       decoration: BoxDecoration(

@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/merchant_login/merchant_login.dart';
 
-void main() => runApp(StateSearchApp());
+void main() => runApp(StateSearchApp(
+        onStateSelected: (String) {},
+      ));
 
-class StateSearchApp extends StatelessWidget {
+class StateSearchApp extends StatefulWidget {
+  final Function(String) onStateSelected;
+  // Constructor with the required named parameter
+  StateSearchApp({required this.onStateSelected});
+  @override
+  State<StateSearchApp> createState() => _StateSearchAppState();
+}
+
+class _StateSearchAppState extends State<StateSearchApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,7 +74,7 @@ class _StateSearchScreenState extends State<StateSearchScreen> {
   @override
   void initState() {
     super.initState();
-    filteredStates = states;
+    filteredStates = states; // Initialize filtered states
   }
 
   void _filterStates(String query) {
@@ -85,11 +96,10 @@ class _StateSearchScreenState extends State<StateSearchScreen> {
               color: Colors.white,
             )),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
       ),
       body: Column(
         children: [
@@ -114,15 +124,28 @@ class _StateSearchScreenState extends State<StateSearchScreen> {
             child: ListView.builder(
               itemCount: filteredStates.length,
               itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 4.0, horizontal: 12.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE8F6F3),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: ListTile(
-                    title: Text(filteredStates[index]),
+                return GestureDetector(
+                  onTap: () {
+                    print("Selected State: ${filteredStates[index]}");
+
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MerchantLogin(
+                            state: filteredStates[index], city: '',
+                          ),
+                        ));
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 4.0, horizontal: 12.0),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFE8F6F3),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ListTile(
+                      title: Text(filteredStates[index]),
+                    ),
                   ),
                 );
               },

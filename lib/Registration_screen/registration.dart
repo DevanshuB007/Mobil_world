@@ -151,7 +151,10 @@ class _RegistrationState extends State<Registration> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MerchantLogin()));
+                              builder: (context) => MerchantLogin(
+                                    state: '',
+                                    city: '',
+                                  )));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFF8C00),

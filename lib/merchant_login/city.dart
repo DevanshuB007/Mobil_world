@@ -1,94 +1,28 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(CitySelectionApp());
-
-class CitySelectionApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CitySelectionScreen(),
-    );
-  }
-}
-
-class CitySelectionScreen extends StatefulWidget {
-  @override
-  _CitySelectionScreenState createState() => _CitySelectionScreenState();
-}
-
-class _CitySelectionScreenState extends State<CitySelectionScreen> {
-  String selectedCity = "Select city"; // Default hint text
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF17A589),
-        title: Text("City Selector", style: TextStyle(color: Colors.white)),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              onTap: () async {
-                // Navigate to the city search screen and wait for the result
-                final result = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CitySearchScreen(),
-                  ),
-                );
-
-                // Update the selected city if a result is returned
-                if (result != null) {
-                  setState(() {
-                    selectedCity = result;
-                  });
-                }
-              },
-              readOnly: true,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Color(0xFFebfaf7),
-                hintText: selectedCity, // Show the selected city
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: Color(0xFF17A589),
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: Color(0xFF17A589),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+void main() => runApp(CitySearchScreen(
+      onCitySelected: (String) {},
+    ));
 
 class CitySearchScreen extends StatefulWidget {
+  final Function(String) onCitySelected;
+  String? selectedCity;
+
+  CitySearchScreen({required this.onCitySelected});
   @override
   _CitySearchScreenState createState() => _CitySearchScreenState();
 }
 
 class _CitySearchScreenState extends State<CitySearchScreen> {
   List<String> cities = [
-    "Mumbai",
-    "Delhi",
-    "Bangalore",
-    "Hyderabad",
-    "Ahmedabad",
-    "Chennai",
-    "Kolkata",
+    "Rajkot",
     "Surat",
+    "Ahmedabad",
+    "Hyderabad",
+    "Vadodara",
+    "Junagadh",
+    "Kachchh",
+    "Mumbai",
     "Pune",
     "Jaipur",
     "Lucknow",
