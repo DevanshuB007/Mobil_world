@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/dashbord.dart';
 import 'package:gaytri_mobile/merchant_login/area.dart';
 import 'package:gaytri_mobile/merchant_login/city.dart';
 import 'package:gaytri_mobile/merchant_login/state.dart';
@@ -28,7 +29,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
         _shopImage = File(pickedFile.path) as XFile?;
       });
     }
-    Navigator.pop(context); // Close the bottom sheet
+    Navigator.pop(context);
   }
 
   void _showImagePickerOptions() {
@@ -169,25 +170,20 @@ class _MerchantLoginState extends State<MerchantLogin> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFFebfaf7), // Background color
+                  color: Color(0xFFebfaf7),
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                      color: Color(0xFF17A589), // Border color
-                      width: 1 // Border width
+                      color: Color(0xFF17A589), width: 1 // Border width
                       ),
                 ),
-                padding: EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 12), // Padding inside the container
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                 child: GestureDetector(
                     onTap: () {
-                      // Navigate to the StateSearchApp screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => StateSearchApp(
                             onStateSelected: (state) {
-                              // Update selected state when a state is selected from StateSearchApp
                               setState(() {
                                 selectedState = state;
                               });
@@ -199,10 +195,10 @@ class _MerchantLoginState extends State<MerchantLogin> {
                     child: Text(
                       widget.state != null && widget.state.isNotEmpty
                           ? widget.state
-                          : "Select state", // Check if state is null or empty
+                          : "Select state",
                       style: TextStyle(
-                        color: Colors.black54, // Text color
-                        fontSize: 16, // Font size
+                        color: Colors.black54,
+                        fontSize: 16,
                       ),
                     )),
               ),
@@ -211,13 +207,11 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               TextField(
                 onTap: () async {
-                  // Navigate to CitySearchScreen and await the result
                   final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => CitySearchScreen(
-                        onCitySelected:
-                            (String city) {}, // Unused in this context
+                        onCitySelected: (String city) {},
                       ),
                     ),
                   );
@@ -489,7 +483,10 @@ class _MerchantLoginState extends State<MerchantLogin> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Dashbord()));
+                  },
                   child: Text('Submit'),
                 ),
               ),
