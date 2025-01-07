@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/How%20to%20use/pdfview_scr.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/Magic_Box/magic_box.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/profile/Profile.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
@@ -80,12 +83,17 @@ class Sidebar extends StatelessWidget {
             ),
             title: Text('How to Use?'),
             trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color(0xFF17A589),
-                )),
+              onPressed: () async {
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => PDFViewerScreen()));
+              },
+              icon: Icon(
+                Icons.arrow_forward_ios,
+                color: Color(0xFF17A589),
+              ),
+            ),
           ),
+
           ListTile(
             leading: Icon(
               Icons.home,
@@ -100,26 +108,40 @@ class Sidebar extends StatelessWidget {
                 )),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Profile()));
+            },
             leading: Icon(
               Icons.person,
               color: Color(0xFF17A589),
             ),
             title: Text('Profile?'),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   color: Color(0xFF17A589),
                 )),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MagicBox()));
+            },
             leading: Icon(
               Icons.cases_outlined,
               color: Color(0xFF17A589),
             ),
             title: Text('Magic Box'),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MagicBox()));
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   color: Color(0xFF17A589),

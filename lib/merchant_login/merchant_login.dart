@@ -5,6 +5,7 @@ import 'package:gaytri_mobile/Drawer_Screen/View/dashbord.dart';
 import 'package:gaytri_mobile/merchant_login/area.dart';
 import 'package:gaytri_mobile/merchant_login/city.dart';
 import 'package:gaytri_mobile/merchant_login/state.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MerchantLogin extends StatefulWidget {
@@ -79,10 +80,15 @@ class _MerchantLoginState extends State<MerchantLogin> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFebfaf7),
         elevation: 0,
         title: Text(
           'Merchant Sign Up',
+        ),
+        titleTextStyle: GoogleFonts.dmSerifText(
+          fontWeight: FontWeight.w400,
+          fontSize: 17,
+          color: Colors.black,
         ),
         leading: IconButton(
             onPressed: () {
@@ -98,7 +104,10 @@ class _MerchantLoginState extends State<MerchantLogin> {
             children: [
               Text(
                 'PERSONAL DETAILS',
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                style: GoogleFonts.playfairDisplay(
+                    fontWeight: FontWeight.w400, fontSize: 14),
+
+                // style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
                 height: 20,
@@ -106,6 +115,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Merchant name",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -125,6 +136,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Phone",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -144,6 +157,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Merchant email address",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -162,7 +177,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'LOCATION DETAILS',
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                style: GoogleFonts.playfairDisplay(
+                    fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
                 height: 20,
@@ -178,29 +194,28 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 ),
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                 child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => StateSearchApp(
-                            onStateSelected: (state) {
-                              setState(() {
-                                selectedState = state;
-                              });
-                            },
-                          ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StateSearchApp(
+                          onStateSelected: (state) {
+                            setState(() {
+                              selectedState = state;
+                            });
+                          },
                         ),
-                      );
-                    },
-                    child: Text(
-                      widget.state != null && widget.state.isNotEmpty
-                          ? widget.state
-                          : "Select state",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 16,
                       ),
-                    )),
+                    );
+                  },
+                  child: Text(
+                    widget.state != null && widget.state.isNotEmpty
+                        ? widget.state
+                        : "Select state",
+                    style: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -226,6 +241,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 readOnly: true,
                 decoration: InputDecoration(
                     hintText: "Select City",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     filled: true,
                     fillColor: Color(0xFFebfaf7),
                     enabledBorder: OutlineInputBorder(
@@ -254,6 +271,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 readOnly: true,
                 decoration: InputDecoration(
                     hintText: "Select Area",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     filled: true,
                     fillColor: Color(0xFFebfaf7),
                     enabledBorder: OutlineInputBorder(
@@ -274,7 +293,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP DETAILS',
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                style: GoogleFonts.playfairDisplay(
+                    fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
                 height: 20,
@@ -282,6 +302,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Shop name",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -301,6 +323,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Shop description",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -320,6 +344,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Shop address",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -339,6 +365,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               TextField(
                 decoration: InputDecoration(
                     hintText: "Gst number",
+                    hintStyle: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
@@ -357,7 +385,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP IMAGE',
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                style: GoogleFonts.playfairDisplay(
+                    fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
                 height: 10,
@@ -379,9 +408,13 @@ class _MerchantLoginState extends State<MerchantLogin> {
                                 children: [
                                   Icon(Icons.add,
                                       size: 40, color: Color(0xFF17A589)),
-                                  Text('Upload Shop Image (16:9)',
-                                      style:
-                                          TextStyle(color: Color(0xFF17A589))),
+                                  Text(
+                                    'Upload Shop Image (16:9)',
+                                    style: GoogleFonts.lora(
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF17A589),
+                                        fontSize: 16),
+                                  ),
                                 ],
                               ),
                             )
@@ -405,13 +438,17 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 children: [
                   Text(
                     'Do you have any referral code?',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                    style: GoogleFonts.playfairDisplay(
+                        fontWeight: FontWeight.w400, fontSize: 14),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       'APPLY',
-                      style: TextStyle(fontSize: 16),
+                      style: GoogleFonts.playfairDisplay(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Color(0xFF17A589)),
                     ),
                   ),
                 ],
@@ -423,6 +460,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
                       decoration: InputDecoration(
                         suffixIcon: Icon(Icons.close),
                         hintText: "Enter referral code",
+                        hintStyle: GoogleFonts.lora(
+                            fontWeight: FontWeight.w400, fontSize: 16),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
@@ -445,7 +484,11 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'Please enter Distributor code?',
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                style: GoogleFonts.playfairDisplay(
+                    fontWeight: FontWeight.w400, fontSize: 14),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Row(
                 children: [
@@ -454,6 +497,8 @@ class _MerchantLoginState extends State<MerchantLogin> {
                       decoration: InputDecoration(
                         suffixIcon: Icon(Icons.close),
                         hintText: "Enter referral code",
+                        hintStyle: GoogleFonts.lora(
+                            fontWeight: FontWeight.w400, fontSize: 16),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
@@ -474,20 +519,41 @@ class _MerchantLoginState extends State<MerchantLogin> {
               SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              Container(
                 width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      // Colors.red.shade400,
+                      // Colors.blue.shade400,
+                      Color(0xFF01ae90),
+                      Color(0xFF06816c),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF17A589),
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Dashbord()));
                   },
-                  child: Text('Submit'),
+                  child: Text(
+                    'Submit',
+                    style: GoogleFonts.lora(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/Login_screen/customer_login.dart';
 import 'package:gaytri_mobile/merchant_login/merchant_login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Registration extends StatefulWidget {
   const Registration({super.key});
@@ -19,8 +20,8 @@ class _RegistrationState extends State<Registration> {
             borderRadius: BorderRadius.circular(5),
           ),
           child: SizedBox(
-            width: 350,
-            height: 100,
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: 110,
             child: Column(
               children: [
                 Row(
@@ -31,11 +32,17 @@ class _RegistrationState extends State<Registration> {
                           Navigator.pop(context);
                         },
                         icon: Icon(Icons.close_rounded)),
-                    Text(
-                      "Register / Login as Customer",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+                    Expanded(
+                      child: Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        "Register/Login as Customer",
+                        style: GoogleFonts.playfair(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
@@ -50,7 +57,7 @@ class _RegistrationState extends State<Registration> {
                                 builder: (context) => CustomerLogin()));
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue.shade700,
+                        backgroundColor: Color(0xFF253b86),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -73,7 +80,7 @@ class _RegistrationState extends State<Registration> {
                                 builder: (context) => CustomerLogin()));
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green[200],
+                        backgroundColor: Color(0xFF01ae90),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -101,78 +108,125 @@ class _RegistrationState extends State<Registration> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Image.asset(
-                'assets/images/logo.png',
-                height: 120,
-                fit: BoxFit.contain,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  height: 120,
+                  fit: BoxFit.contain,
+                ),
               ),
-            ),
-            const Spacer(),
-            Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: Image.asset(
-                'assets/images/character.png',
-                height: 200,
-                width: 300,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
+              // const Spacer(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ElevatedButton(
-                    onPressed: _showCustomerDialog,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF17A589),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      minimumSize: const Size.fromHeight(50),
+                  Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
                     ),
-                    child: const Text(
-                      "Register / Login as Customer",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    child: Image.asset(
+                      'assets/images/character.png',
+                      height: 200,
+                      width: 300,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MerchantLogin(
-                                    state: '',
-                                    city: '',
-                                  )));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF8C00),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      minimumSize: const Size.fromHeight(50),
-                    ),
-                    child: const Text(
-                      "Register / Login as Merchant",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                  const SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                // Colors.red.shade400,
+                                // Colors.blue.shade400,
+                                Color(0xFF01ae90),
+                                Color(0xFF06816c),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: _showCustomerDialog,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors
+                                  .transparent, // Make button background transparent
+                              shadowColor:
+                                  Colors.transparent, // Remove button shadow
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              minimumSize: const Size.fromHeight(50),
+                            ),
+                            child: Text(
+                              "Register / Login as Customer",
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Gradient Button for Merchant
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFff9500), Color(0xFFfe5c1e)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MerchantLogin(state: '', city: ''),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              minimumSize: const Size.fromHeight(50),
+                            ),
+                            child: Text(
+                              "Register / Login as Merchant",
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  const SizedBox(height: 30),
                 ],
-              ),
-            ),
-            const SizedBox(height: 30),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
