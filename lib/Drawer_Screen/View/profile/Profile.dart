@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/profile/edit_profile.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -28,125 +29,141 @@ class _ProfileState extends State<Profile> {
           style: TextStyle(fontSize: 16),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Profile Picture
-              CircleAvatar(
-                radius: 40,
-                // backgroundImage: AssetImage(
-                //     'assets/profile_placeholder.png'), // Replace with your image
-              ),
-              SizedBox(height: 16),
-              // Name and Email
-              Text(
-                "GAYTRI MOBILE",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "gayatri07@gmail.com",
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-              ),
-              SizedBox(height: 16),
-              // Edit Profile Button
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EditProfile(
-                                state: '',
-                                city: '',
-                              )));
-                },
-                label: Text(
-                  "Edit Profile",
-                  style: TextStyle(color: Colors.white),
-                ),
-                icon: Icon(Icons.edit, color: Colors.white),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF17A589),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Profile Picture
+                  CircleAvatar(
+                    radius: 40,
+                    // backgroundImage: AssetImage(
+                    //     'assets/profile_placeholder.png'), // Replace with your image
                   ),
-                ),
-              ),
-              SizedBox(height: 20),
-              // Personal Details Section
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                elevation: 4,
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: SizedBox(
-                    // height: 200,
-                    // width: 00,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Name",
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.grey[600])),
-                            Text("gaytri mobile",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black)),
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Mobile",
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.grey[600])),
-                            Text("9316072255",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black)),
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Email",
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.grey[600])),
-                            Text("gayatri07@gmail.com",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black)),
-                          ],
-                        ),
-                      ],
+                  SizedBox(height: 16),
+                  // Name and Email
+                  Text(
+                    "GAYTRI MOBILE",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "gayatri07@gmail.com",
+                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  ),
+                  SizedBox(height: 16),
+                  // Edit Profile Button
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfile(
+                                    state: '',
+                                    city: '',
+                                  )));
+                    },
+                    label: Text(
+                      "Edit Profile",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    icon: Icon(Icons.edit, color: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF17A589),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(height: 20),
-              // Location Details Section
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Location Details",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  SizedBox(height: 20),
+                  // Personal Details Section
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        elevation: 4,
+                        margin: EdgeInsets.symmetric(vertical: 8.0),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: SizedBox(
+                            // height: 200,
+                            // width: 00,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Name",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey[600])),
+                                    Text("gaytri mobile",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black)),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Mobile",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey[600])),
+                                    Text("9316072255",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black)),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Email",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey[600])),
+                                    Text("gayatri07@gmail.com",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
+              //  Location Details Section
               SizedBox(height: 10),
+              Text(
+                "Location Details",
+                style: GoogleFonts.playfair(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                // style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+
+              // SizedBox(height: 10),
               Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0),
@@ -206,7 +223,10 @@ class _ProfileState extends State<Profile> {
               // Shop Details Section
               Text(
                 "Shop Details",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: GoogleFonts.playfair(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 10),
               Card(
@@ -218,6 +238,7 @@ class _ProfileState extends State<Profile> {
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -248,12 +269,13 @@ class _ProfileState extends State<Profile> {
                           ),
                         ],
                       ),
+                      Divider(),
                       Column(
                         children: [
-                          Text("Shop Name",
+                          Text("Shop Description",
                               style: TextStyle(
                                   fontSize: 14, color: Colors.grey[600])),
-                          Text("gaytri mobile",
+                          Text("gaytri mobile World",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -263,7 +285,7 @@ class _ProfileState extends State<Profile> {
                       Divider(),
                       Column(
                         children: [
-                          Text("Shop Name",
+                          Text("Shop Address",
                               style: TextStyle(
                                   fontSize: 14, color: Colors.grey[600])),
                           Text("gaytri mobile",
