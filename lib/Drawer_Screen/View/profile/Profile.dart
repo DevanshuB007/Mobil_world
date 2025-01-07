@@ -271,14 +271,17 @@ class _ProfileState extends State<Profile> {
                       ),
                       Divider(),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Shop Description",
-                              style: TextStyle(
-                                  fontSize: 14, color: Colors.grey[600])),
+                          Text(
+                            "Shop Description",
+                            style: TextStyle(
+                                fontSize: 14, color: Colors.grey[600]),
+                          ),
                           Text("gaytri mobile World",
                               style: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.black)),
                         ],
                       ),
@@ -288,11 +291,13 @@ class _ProfileState extends State<Profile> {
                           Text("Shop Address",
                               style: TextStyle(
                                   fontSize: 14, color: Colors.grey[600])),
-                          Text("gaytri mobile",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
+                          Text(
+                            "gaytri mobile",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
                         ],
                       ),
                     ],

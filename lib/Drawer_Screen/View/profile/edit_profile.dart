@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/merchant_login/area.dart';
 import 'package:gaytri_mobile/merchant_login/city.dart';
 import 'package:gaytri_mobile/merchant_login/state.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfile extends StatefulWidget {
@@ -89,7 +90,12 @@ class _EditProfileState extends State<EditProfile> {
         centerTitle: true,
         title: Text(
           "Edit Profile",
-          style: TextStyle(fontSize: 16),
+          style: GoogleFonts.playfair(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+
+          // style: TextStyle(fontSize: 16),
         ),
       ),
       body: Padding(
@@ -100,6 +106,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Merchant name",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -119,6 +127,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Phone",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -138,6 +148,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Merchant email address",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -156,7 +168,10 @@ class _EditProfileState extends State<EditProfile> {
             ),
             Text(
               'LOCATION DETAILS',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              style: GoogleFonts.playfairDisplay(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+              ),
             ),
             SizedBox(
               height: 20,
@@ -190,10 +205,8 @@ class _EditProfileState extends State<EditProfile> {
                     widget.state != null && widget.state.isNotEmpty
                         ? widget.state
                         : "Select state",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 16,
-                    ),
+                    style: GoogleFonts.lora(
+                        fontWeight: FontWeight.w400, fontSize: 16),
                   )),
             ),
             SizedBox(
@@ -220,6 +233,8 @@ class _EditProfileState extends State<EditProfile> {
               readOnly: true,
               decoration: InputDecoration(
                   hintText: "Select City",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   filled: true,
                   fillColor: Color(0xFFebfaf7),
                   enabledBorder: OutlineInputBorder(
@@ -248,6 +263,8 @@ class _EditProfileState extends State<EditProfile> {
               readOnly: true,
               decoration: InputDecoration(
                   hintText: "Select Area",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   filled: true,
                   fillColor: Color(0xFFebfaf7),
                   enabledBorder: OutlineInputBorder(
@@ -268,7 +285,10 @@ class _EditProfileState extends State<EditProfile> {
             ),
             Text(
               'SHOP DETAILS',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              style: GoogleFonts.playfairDisplay(
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+              ),
             ),
             SizedBox(
               height: 20,
@@ -276,6 +296,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Shop name",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -295,6 +317,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Shop description",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -314,6 +338,8 @@ class _EditProfileState extends State<EditProfile> {
             TextField(
               decoration: InputDecoration(
                   hintText: "Shop address",
+                  hintStyle: GoogleFonts.lora(
+                      fontWeight: FontWeight.w400, fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
@@ -328,7 +354,44 @@ class _EditProfileState extends State<EditProfile> {
                   )),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    // Colors.red.shade400,
+                    // Colors.blue.shade400,
+                    Color(0xFF01ae90),
+                    Color(0xFF06816c),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => Dashbord()));
+                },
+                child: Text(
+                  'Update',
+                  style: GoogleFonts.lora(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
