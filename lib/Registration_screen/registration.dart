@@ -120,7 +120,7 @@ class _RegistrationState extends State<Registration> {
                 padding: const EdgeInsets.only(top: 50),
                 child: Image.asset(
                   'assets/images/logo.png',
-                  height: 360,
+                  height: MediaQuery.of(context).size.height * 0.5,
                   fit: BoxFit.contain,
                 ),
               ),

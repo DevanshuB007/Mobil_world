@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/How%20to%20use/pdfview_scr.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/Magic_Box/magic_box.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/My_Membership/membership.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/My_wallet/wallet.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/profile/Profile.dart';
 
 class Sidebar extends StatelessWidget {
@@ -15,13 +17,15 @@ class Sidebar extends StatelessWidget {
           Container(
             // color: Colors.red,
             height: 100,
+            width: double.infinity,
             child: Row(
               children: [
                 Image.asset(
                   'assets/images/logo.png',
                   // Replace with your logo asset
-                  height: 60,
+                  height: 100,
                 ),
+                SizedBox(width: 20),
                 Text(
                   '|',
                   style: TextStyle(fontSize: 40, color: Colors.grey),
@@ -152,21 +156,35 @@ class Sidebar extends StatelessWidget {
               Icons.wallet,
               color: Color(0xFF17A589),
             ),
-            title: Text('Wallet?'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Wallet()));
+            },
+            title: Text('Wallet'),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Wallet()));
+              },
               icon: Icon(Icons.arrow_forward_ios),
               color: Color(0xFF17A589),
             ),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Membership()));
+            },
             leading: Icon(
               Icons.card_membership,
               color: Color(0xFF17A589),
             ),
             title: Text('My Membership'),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Membership()));
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   color: Color(0xFF17A589),

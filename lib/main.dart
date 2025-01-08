@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/dashbord.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/sidebar.dart';
 import 'package:gaytri_mobile/merchant_login/merchant_login.dart';
 import 'package:gaytri_mobile/Registration_screen/registration.dart';
 import 'package:gaytri_mobile/Splash_screen/splash_screen.dart';
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: Splashscreen(),
-      // home: Dashbord(),
+      // home: Splashscreen(),
+      home: Sidebar(),
     );
   }
 }

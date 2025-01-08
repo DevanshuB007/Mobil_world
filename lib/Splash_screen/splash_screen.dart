@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/Registration_screen/registration.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -29,18 +30,21 @@ class _SplashscreenState extends State<Splashscreen> {
         body: Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Image.asset(
-          'assets/images/splash.png',
-          height: 700,
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Image.asset(
+            'assets/images/splash.png',
+            height: 600,
+          ),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
           'Made in India',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w300,
+          style: GoogleFonts.roboto(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

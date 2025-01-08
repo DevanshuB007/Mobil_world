@@ -34,6 +34,30 @@ class _MagicBoxState extends State<MagicBox> {
       "price": "₹3,599",
       "image": "assets/images/vivo.jpeg",
     },
+    {
+      "name": "vivo v29e",
+      "brand": "Vivo",
+      "price": "₹21,000",
+      "image": "assets/images/vivo.jpeg",
+    },
+    {
+      "name": "Realme c35 with very",
+      "brand": "Realme",
+      "price": "₹4,500",
+      "image": "assets/images/vivo.jpeg",
+    },
+    {
+      "name": "iqoo neo7 5g",
+      "brand": "Other",
+      "price": "₹22,000",
+      "image": "assets/images/vivo.jpeg",
+    },
+    {
+      "name": "Redmi 9A / 3Gb RAM /",
+      "brand": "MI",
+      "price": "₹3,599",
+      "image": "assets/images/vivo.jpeg",
+    },
   ];
 
   @override
@@ -143,7 +167,7 @@ class PhoneCard extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.asset(
                 imagePath,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 width: double.infinity,
               ),
             ),
