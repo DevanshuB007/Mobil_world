@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gaytri_mobile/merchant_login/merchant_login.dart';
 
 void main() => runApp(StateSearchApp(
-        onStateSelected: (String) {},
-      ));
+      onStateSelected: (String) {},
+    ));
 
 class StateSearchApp extends StatefulWidget {
   final Function(String) onStateSelected;
@@ -96,10 +96,11 @@ class _StateSearchScreenState extends State<StateSearchScreen> {
               color: Colors.white,
             )),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+         onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -132,7 +133,8 @@ class _StateSearchScreenState extends State<StateSearchScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => MerchantLogin(
-                            state: filteredStates[index], city: '',
+                            state: filteredStates[index],
+                            city: '',
                           ),
                         ));
                   },

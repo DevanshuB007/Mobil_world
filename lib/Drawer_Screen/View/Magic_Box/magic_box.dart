@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/merchant_login/state.dart';
 
 class MagicBox extends StatefulWidget {
   const MagicBox({super.key});
@@ -56,12 +57,19 @@ class _MagicBoxState extends State<MagicBox> {
         children: [
           // Filters at the top
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return StateSearchApp(
+                        onStateSelected: (String) {},
+                      );
+                    }));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green.shade100,
                   ),
