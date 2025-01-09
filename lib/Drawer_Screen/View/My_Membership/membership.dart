@@ -135,7 +135,7 @@ class _MembershipState extends State<Membership> {
                           builder: (context) => MembershipPlan()));
                 },
                 child: Text(
-                  'Submit',
+                  'Renew Now',
                   style: GoogleFonts.lora(
                     fontSize: 16,
                     color: Colors.white,

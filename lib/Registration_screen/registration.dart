@@ -117,10 +117,10 @@ class _RegistrationState extends State<Registration> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 150),
                 child: Image.asset(
-                  'assets/images/logo.png',
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  'assets/images/Gayatri_Main.png',
+                  height: MediaQuery.of(context).size.height * 0.2,
                   fit: BoxFit.contain,
                 ),
               ),

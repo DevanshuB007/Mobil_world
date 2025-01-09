@@ -64,6 +64,8 @@ class _MagicBoxState extends State<MagicBox> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {

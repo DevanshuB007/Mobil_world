@@ -33,7 +33,7 @@ class _SplashscreenState extends State<Splashscreen> {
         Padding(
           padding: const EdgeInsets.all(16),
           child: Image.asset(
-            'assets/images/splash.png',
+            'assets/images/Gayatri_Main.png',
             height: 600,
           ),
         ),

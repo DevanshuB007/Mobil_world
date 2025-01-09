@@ -80,6 +80,9 @@ class _MerchantLoginState extends State<MerchantLogin> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        scrolledUnderElevation: 0,
+        // backgroundColor: Colors.white,
+
         backgroundColor: Color(0xFFebfaf7),
         elevation: 0,
         title: Text(

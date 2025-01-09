@@ -1,12 +1,80 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/Customer_Data/customer_data_acce.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/How%20to%20use/pdfview_scr.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/Magic_Box/magic_box.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/My_Membership/membership.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/My_wallet/wallet.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/Rafer%20&%20Earn/rafer&earn.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/profile/Profile.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/update%20KYC/update.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
-class Sidebar extends StatelessWidget {
+class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
+
+  @override
+  State<Sidebar> createState() => _SidebarState();
+}
+
+class _SidebarState extends State<Sidebar> {
+  XFile? _shopImage;
+
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _shopImage = File(pickedFile.path) as XFile?;
+      });
+    }
+    Navigator.pop(context);
+  }
+
+  void _showImagePickerOptions() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.photo_library, size: 30),
+                    color: Color(0xFF17A589),
+                    onPressed: () => _pickImage(ImageSource.gallery),
+                  ),
+                  Text(
+                    'Gallery',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.camera_alt, size: 30),
+                    color: Color(0xFF17A589),
+                    onPressed: () => _pickImage(ImageSource.camera),
+                  ),
+                  Text(
+                    'Camera',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +87,12 @@ class Sidebar extends StatelessWidget {
             height: 100,
             width: double.infinity,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/Gayatri_Main.png',
                   // Replace with your logo asset
-                  height: 100,
+                  height: 60,
                 ),
                 SizedBox(width: 20),
                 Text(
@@ -31,15 +100,52 @@ class Sidebar extends StatelessWidget {
                   style: TextStyle(fontSize: 40, color: Colors.grey),
                 ),
                 const SizedBox(width: 8),
+                if (_shopImage != null)
+                  Image.file(
+                    File(_shopImage!.path),
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  )
+                else
+                  const SizedBox(height: 20),
+                // Icon button to trigger image picker modal
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add_photo_alternate_rounded,
                     color: Colors.grey,
                     size: 50,
                   ),
+                  onPressed: _showImagePickerOptions,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Upload Logo',
+                      style: GoogleFonts.lora(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Text(
+                      "(Brand Name)",
+                      style: GoogleFonts.lora(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.grey,
+                  ),
                   onPressed: () {},
                 ),
-                Text('Upload Logo')
               ],
             ),
           ),
@@ -205,6 +311,10 @@ class Sidebar extends StatelessWidget {
                 )),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CustomerDataAcce()));
+            },
             leading: Icon(
               Icons.dataset_rounded,
               color: Color(0xFF17A589),
@@ -218,6 +328,10 @@ class Sidebar extends StatelessWidget {
                 )),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => raferearn()));
+            },
             leading: Icon(
               Icons.auto_fix_high,
               color: Color(0xFF17A589),
@@ -552,49 +666,11 @@ class Sidebar extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Update()));
+      },
       child: Text(text),
     );
   }
-
-  // List<Widget> _menuItems() {
-  //   final menu = [
-  //     {'icon': Icons.help_outline, 'label': 'How to use?'},
-  //     {'icon': Icons.home_outlined, 'label': 'Home'},
-  //     {'icon': Icons.person_outline, 'label': 'Profile'},
-  //     {'icon': Icons.cases_outlined, 'label': 'Magic Box'},
-  //     {'icon': Icons.account_balance_wallet_outlined, 'label': 'Wallet'},
-  //     {'icon': Icons.card_membership, 'label': 'My Membership'},
-  //     {'icon': Icons.dashboard_outlined, 'label': 'Finance Dashboard'},
-  //     {'icon': Icons.data_usage_outlined, 'label': 'Customer Data Access'},
-  //     {'icon': Icons.card_giftcard, 'label': 'Refer and Earn'},
-  //   ];
-  //   return menu
-  //       .map((item) => ListTile(
-  //             leading: Icon(item['icon'] as IconData, color: Colors.green),
-  //             title: Text(item['label'] as String),
-  //             trailing: Icon(Icons.arrow_forward_ios, size: 16),
-  //             onTap: () {},
-  //           ))
-  //       .toList();
-  // }
-
-  // List<Widget> _soldProductItems() {
-  //   final soldProducts = [
-  //     {'icon': Icons.sell_outlined, 'label': 'Sold Products Data'},
-  //     {
-  //       'icon': Icons.download_outlined,
-  //       'label': 'Download Sold Products Report'
-  //     },
-  //     {'icon': Icons.inventory_outlined, 'label': 'Download Inventory Report'},
-  //   ];
-  //   return soldProducts
-  //       .map((item) => ListTile(
-  //             leading: Icon(item['icon'] as IconData, color: Colors.teal),
-  //             title: Text(item['label'] as String),
-  //             trailing: Icon(Icons.arrow_forward_ios, size: 16),
-  //             onTap: () {},
-  //           ))
-  //       .toList();
-  // }
 }
