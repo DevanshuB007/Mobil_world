@@ -190,6 +190,10 @@ class _SidebarState extends State<Sidebar> {
               ],
             ),
             ListTile(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PDFViewerScreen()));
+              },
               leading: Icon(
                 Icons.help_outline,
                 color: Color(0xFF17A589),
