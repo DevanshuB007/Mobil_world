@@ -39,7 +39,7 @@ class _UpdateState extends State<Update> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
+              Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
@@ -50,7 +50,7 @@ class _UpdateState extends State<Update> {
                   const Text('Gallery'),
                 ],
               ),
-              Column(
+              Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
@@ -75,9 +75,11 @@ class _UpdateState extends State<Update> {
         height: 100,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey[400]!, width: 1.5),
-          borderRadius: BorderRadius.circular(8),
+          // color: Colors.white,
+          border: Border.all(
+            color: Colors.grey[400]!,
+          ),
+          borderRadius: BorderRadius.circular(5),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,9 +124,10 @@ class _UpdateState extends State<Update> {
         backgroundColor: Colors.white,
         elevation: 1,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
               children: [
@@ -162,74 +165,91 @@ class _UpdateState extends State<Update> {
                 Expanded(child: _buildUploadBox('Add Shop outside image')),
               ],
             ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Checkbox(
-                  value: true,
-                  onChanged: (value) {
-                    // Handle checkbox change
-                  },
-                ),
-                Text(
-                  'I Accept the ',
-                  style: GoogleFonts.poppins(fontSize: 14, color: Colors.black),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Handle terms & conditions tap
-                  },
-                  child: Text(
-                    'Terms & Conditions.',
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: const Color(0xFF17A589),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
+            // const SizedBox(height: 20),
+            // Spacer(),
             Container(
+              height: 120,
               width: double.infinity,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    // Colors.red.shade400,
-                    // Colors.blue.shade400,
-                    Color(0xFF01ae90),
-                    Color(0xFF06816c),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.grey[400]!,
                 ),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add submission logic
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('KYC Submitted Successfully')),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF17A589),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[300]!,
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
                   ),
-                ),
-                child: const Text(
-                  'Submit',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+                ],
               ),
-            ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: true,
+                        onChanged: (value) {
+                          // Handle checkbox change
+                        },
+                      ),
+                      Text(
+                        'I Accept the ',
+                        style: GoogleFonts.poppins(
+                            fontSize: 14, color: Colors.black),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Handle terms & conditions tap
+                        },
+                        child: Text(
+                          'Terms & Conditions.',
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: const Color(0xFF17A589),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    // height: 50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add submission logic
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('KYC Submitted Successfully')),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          // backgroundColor: const Color(0xFF17A589),
+                          backgroundColor: Colors.grey[400],
+                          // shadowColor: Colors.transparent,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text(
+                          'Submit',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
