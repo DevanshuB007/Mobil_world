@@ -197,8 +197,10 @@ class _SidebarState extends State<Sidebar> {
               title: Text('How to Use?'),
               trailing: IconButton(
                 onPressed: () async {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => PDFViewerScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PDFViewerScreen()));
                 },
                 icon: Icon(
                   Icons.arrow_forward_ios,
