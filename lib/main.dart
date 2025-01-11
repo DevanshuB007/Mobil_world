@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/Magic_Box/magic_box.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/dashbord.dart';
 import 'package:gaytri_mobile/Drawer_Screen/View/sidebar.dart';
 import 'package:gaytri_mobile/merchant_login/merchant_login.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       home: Splashscreen(),
-      // home: Sidebar(),
+      // home: MagicBox(),
     );
   }
 }

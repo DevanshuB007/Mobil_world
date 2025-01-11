@@ -113,6 +113,7 @@ class _UpdateState extends State<Update> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Color(0xFF17A589)),
+        centerTitle: true,
         title: const Text('Update KYC'),
         titleTextStyle: GoogleFonts.poppins(
           textStyle: const TextStyle(
@@ -127,7 +128,7 @@ class _UpdateState extends State<Update> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
               children: [
@@ -138,7 +139,7 @@ class _UpdateState extends State<Update> {
             ),
             const SizedBox(height: 16),
             _buildUploadBox('PAN Front'),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
                 labelText: 'GST Number',
@@ -155,9 +156,9 @@ class _UpdateState extends State<Update> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             _buildUploadBox('Shop License'),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             Row(
               children: [
                 Expanded(child: _buildUploadBox('Add Shop inside image')),
@@ -165,10 +166,10 @@ class _UpdateState extends State<Update> {
                 Expanded(child: _buildUploadBox('Add Shop outside image')),
               ],
             ),
-            // const SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Spacer(),
             Container(
-              height: 120,
+              height: 150,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -185,6 +186,7 @@ class _UpdateState extends State<Update> {
                 ],
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     children: [

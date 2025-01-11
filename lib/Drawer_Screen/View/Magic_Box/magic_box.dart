@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/merchant_login/city.dart';
 import 'package:gaytri_mobile/merchant_login/state.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MagicBox extends StatefulWidget {
   const MagicBox({super.key});
@@ -20,13 +22,37 @@ class _MagicBoxState extends State<MagicBox> {
       "name": "Realme c35 with very",
       "brand": "Realme",
       "price": "₹4,500",
-      "image": "assets/images/vivo.jpeg",
+      "image": "assets/images/Realme.jpeg",
     },
     {
       "name": "iqoo neo7 5g",
       "brand": "Other",
       "price": "₹22,000",
-      "image": "assets/images/vivo.jpeg",
+      "image": "assets/images/iqoo.jpeg",
+    },
+    {
+      "name": "Redmi 9A / 3Gb RAM /",
+      "brand": "MI",
+      "price": "₹3,599",
+      "image": "assets/images/Redmi.jpeg",
+    },
+    {
+      "name": "oppo a15s",
+      "brand": "oppo",
+      "price": "₹4,000.0",
+      "image": "assets/images/oppo.jpeg",
+    },
+    {
+      "name": "12 note 5g/8/256",
+      "brand": "Mi",
+      "price": "₹15,000.0",
+      "image": "assets/images/note5g.jpeg",
+    },
+    {
+      "name": "iqoo neo7 5g",
+      "brand": "Other",
+      "price": "₹22,000",
+      "image": "assets/images/iqoo.jpeg",
     },
     {
       "name": "Redmi 9A / 3Gb RAM /",
@@ -44,13 +70,37 @@ class _MagicBoxState extends State<MagicBox> {
       "name": "Realme c35 with very",
       "brand": "Realme",
       "price": "₹4,500",
-      "image": "assets/images/vivo.jpeg",
+      "image": "assets/images/Realme.jpeg",
     },
     {
       "name": "iqoo neo7 5g",
       "brand": "Other",
       "price": "₹22,000",
-      "image": "assets/images/vivo.jpeg",
+      "image": "assets/images/iqoo.jpeg",
+    },
+    {
+      "name": "Redmi 9A / 3Gb RAM /",
+      "brand": "MI",
+      "price": "₹3,599",
+      "image": "assets/images/Redmi.jpeg",
+    },
+    {
+      "name": "oppo a15s",
+      "brand": "oppo",
+      "price": "₹4,000.0",
+      "image": "assets/images/oppo.jpeg",
+    },
+    {
+      "name": "12 note 5g/8/256",
+      "brand": "Mi",
+      "price": "₹15,000.0",
+      "image": "assets/images/note5g.jpeg",
+    },
+    {
+      "name": "iqoo neo7 5g",
+      "brand": "Other",
+      "price": "₹22,000",
+      "image": "assets/images/iqoo.jpeg",
     },
     {
       "name": "Redmi 9A / 3Gb RAM /",
@@ -74,41 +124,83 @@ class _MagicBoxState extends State<MagicBox> {
           icon: Icon(Icons.arrow_back, color: Colors.green),
         ),
         centerTitle: true,
+        titleTextStyle: GoogleFonts.lora(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+        ),
         title: Text(
           'Phones available for purchase',
-          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Column(
         children: [
           // Filters at the top
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return StateSearchApp(
-                        onStateSelected: (String) {},
+                        onStateSelected: (state) {
+                          // Handle state selection
+                        },
                       );
                     }));
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green.shade100,
+                  child: Container(
+                    height: 50,
+                    width: 175,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFf0f9f8),
+                      border: Border.all(color: Color(0xFF17A589)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Select State",
+                      style: GoogleFonts.lora(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
-                  child: Text("Select State",
-                      style: TextStyle(color: Colors.green)),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green.shade100,
+                SizedBox(
+                  width: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CitySearchScreen(
+                        onCitySelected: (String) {},
+                      );
+                    }));
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 175,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFf0f9f8),
+                      border: Border.all(color: Color(0xFF17A589)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Select City",
+                      style: GoogleFonts.lora(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
-                  child: Text("Select City",
-                      style: TextStyle(color: Colors.green)),
                 ),
               ],
             ),
@@ -119,9 +211,9 @@ class _MagicBoxState extends State<MagicBox> {
               padding: const EdgeInsets.all(10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.75,
+                mainAxisSpacing: 3,
+                crossAxisSpacing: 3,
+                childAspectRatio: 0.67,
               ),
               itemCount: phones.length,
               itemBuilder: (context, index) {
@@ -159,7 +251,6 @@ class PhoneCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -169,8 +260,9 @@ class PhoneCard extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.asset(
                 imagePath,
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 width: double.infinity,
+                // height: 50,
               ),
             ),
           ),
@@ -193,8 +285,9 @@ class PhoneCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               price,
-              style: TextStyle(
-                color: Colors.green,
+              style: GoogleFonts.lora(
+                color: Color(0xFF17A589),
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -68,7 +68,7 @@ flutter:
   assets:
     - assets/images/
     - assets/
-    - assets/pdf/1.pdf
+    - assets/pdf/2.pdf
     # - assetd/1.pdf
     # - assets/1.pdf
 

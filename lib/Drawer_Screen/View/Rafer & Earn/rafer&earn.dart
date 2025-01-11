@@ -38,6 +38,7 @@ class _raferearnState extends State<raferearn> {
                 children: [
                   SizedBox(
                     height: size.height * 0.35,
+                    width: double.infinity,
                     child: Lottie.asset('assets/demo.json'),
                   ),
                   const SizedBox(height: 20),
@@ -46,7 +47,7 @@ class _raferearnState extends State<raferearn> {
                     style: GoogleFonts.lora(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 10),

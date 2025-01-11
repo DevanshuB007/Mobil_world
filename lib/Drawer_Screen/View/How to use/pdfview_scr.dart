@@ -7,7 +7,9 @@ class PDFViewerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: SfPdfViewer.asset("assets/pdf/1.pdf")),
+      body: SafeArea(
+        child: SfPdfViewer.asset("assets/pdf/2.pdf"),
+      ),
     );
   }
 }

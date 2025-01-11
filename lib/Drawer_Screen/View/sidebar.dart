@@ -81,7 +81,7 @@ class _SidebarState extends State<Sidebar> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           children: [
             Container(
               // color: Colors.red,
@@ -150,9 +150,6 @@ class _SidebarState extends State<Sidebar> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -161,7 +158,7 @@ class _SidebarState extends State<Sidebar> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Hello, gaytti mobile',
+                      'Hello, Gayatri Mobile World',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -184,7 +181,7 @@ class _SidebarState extends State<Sidebar> {
                   children: [
                     actionButton('Renew', Colors.transparent),
                     const SizedBox(height: 8),
-                    actionButton('Update', Colors.transparent),
+                    actionButton1('Update', Colors.transparent),
                   ],
                 ),
               ],
@@ -671,6 +668,22 @@ class _SidebarState extends State<Sidebar> {
   }
 
   Widget actionButton(String text, Color color) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        // backgroundColor: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Membership()));
+      },
+      child: Text(text),
+    );
+  }
+
+  Widget actionButton1(String text, Color color) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         // backgroundColor: color,
