@@ -259,9 +259,7 @@ class PhoneCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                width: double.infinity,
+                imagePath, fit: BoxFit.cover, width: double.infinity,
                 // height: 50,
               ),
             ),
