@@ -88,7 +88,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
         title: Text(
           'Merchant Sign Up',
         ),
-        titleTextStyle: GoogleFonts.dmSerifText(
+        titleTextStyle: GoogleFonts.roboto(
           fontWeight: FontWeight.w400,
           fontSize: 17,
           color: Colors.black,
@@ -107,7 +107,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
             children: [
               Text(
                 'PERSONAL DETAILS',
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.roboto (
                     fontWeight: FontWeight.w400, fontSize: 14),
 
                 // style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
@@ -180,7 +180,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'LOCATION DETAILS',
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.roboto (
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -296,7 +296,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP DETAILS',
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.roboto (
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -388,7 +388,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP IMAGE',
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.roboto (
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -441,14 +441,14 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 children: [
                   Text(
                     'Do you have any referral code?',
-                    style: GoogleFonts.playfairDisplay(
+                    style: GoogleFonts.roboto (
                         fontWeight: FontWeight.w400, fontSize: 14),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       'APPLY',
-                      style: GoogleFonts.playfairDisplay(
+                      style: GoogleFonts.roboto (
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Color(0xFF17A589)),
@@ -487,7 +487,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'Please enter Distributor code?',
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.roboto (
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:gaytri_mobile/Drawer_Screen/View/intro_Page/intro_page.dart';
 import 'package:gaytri_mobile/Registration_screen/registration.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const Registration(),
+            builder: (context) => const IntroPage(),
           ));
     });
   }
