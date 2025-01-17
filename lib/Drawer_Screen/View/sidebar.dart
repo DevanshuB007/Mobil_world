@@ -35,41 +35,49 @@ class _SidebarState extends State<Sidebar> {
   }
 
   void _showImagePickerOptions() {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     showModalBottomSheet(
       context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(),
+      ),
       builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.photo_library, size: 30),
+        return ClipRRect(
+          borderRadius: BorderRadius.vertical(),
+          child: Container(
+            height: screenWidth * 0.4,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ListTile(
+                  leading: Icon(
+                    Icons.photo_library,
+                    size: 30,
                     color: Color(0xFF17A589),
-                    onPressed: () => _pickImage(ImageSource.gallery),
                   ),
-                  Text(
-                    'Gallery',
+                  title: Text(
+                    "Gallery",
+                    style: TextStyle(fontSize: 18),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.camera_alt, size: 30),
+                  onTap: () => _pickImage(ImageSource.gallery),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.camera_alt,
+                    size: 30,
                     color: Color(0xFF17A589),
-                    onPressed: () => _pickImage(ImageSource.camera),
                   ),
-                  Text(
-                    'Camera',
+                  title: Text(
+                    "Camera",
+                    style: TextStyle(fontSize: 18),
                   ),
-                ],
-              ),
-            ],
+                  onTap: () => _pickImage(ImageSource.camera),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -78,6 +86,8 @@ class _SidebarState extends State<Sidebar> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -93,14 +103,12 @@ class _SidebarState extends State<Sidebar> {
                   Image.asset(
                     'assets/images/Gayatri_Main.png',
                     // Replace with your logo asset
-                    height: 60,
+                    height: screenHeight * 0.08,
+                    width: screenWidth * 0.3,
                   ),
-                  SizedBox(width: 20),
-                  Text(
-                    '|',
-                    style: TextStyle(fontSize: 40, color: Colors.grey),
+                  SizedBox(
+                    width: screenWidth * 0.09,
                   ),
-                  const SizedBox(width: 8),
                   if (_shopImage != null)
                     Image.file(
                       File(_shopImage!.path),
@@ -110,7 +118,11 @@ class _SidebarState extends State<Sidebar> {
                     )
                   else
                     const SizedBox(height: 20),
-                  // Icon button to trigger image picker modal
+                  VerticalDivider(
+                    indent: 30,
+                    endIndent: 30,
+                    color: Colors.grey,
+                  ),
                   IconButton(
                     icon: const Icon(
                       Icons.add_photo_alternate_rounded,
@@ -166,8 +178,8 @@ class _SidebarState extends State<Sidebar> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _statusChip(
-                            'Membership status', 'Active', Colors.green),
+                        _statusChip('Membership status', 'Active',
+                            Colors.green.shade700),
                         const SizedBox(
                           width: 8,
                           height: 10,
@@ -196,6 +208,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('How to Use?'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                 onPressed: () async {
                   Navigator.push(
@@ -216,6 +233,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Home?'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -233,6 +255,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Profile?'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -253,6 +280,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Magic Box'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -273,6 +305,11 @@ class _SidebarState extends State<Sidebar> {
                     context, MaterialPageRoute(builder: (context) => Wallet()));
               },
               title: Text('Wallet'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                 onPressed: () {
                   Navigator.push(context,
@@ -292,6 +329,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('My Membership'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -309,6 +351,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Finance Dashboard'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -328,6 +375,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Customer Data Access'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -345,6 +397,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Rafer and Earn'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -357,7 +414,10 @@ class _SidebarState extends State<Sidebar> {
             const Divider(height: 40),
             Text(
               'Sold Products',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey),
             ),
             ListTile(
               leading: Icon(
@@ -365,6 +425,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Sold Products Data'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -378,6 +443,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Download Sold Products Report'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -391,6 +461,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Download inventory Report'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -401,7 +476,10 @@ class _SidebarState extends State<Sidebar> {
             const SizedBox(height: 16),
             Text(
               'Sim Card Register',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey),
             ),
             ListTile(
               leading: Icon(
@@ -409,6 +487,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Add sim card data'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -422,6 +505,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('View sim card data'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -435,6 +523,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Download Report'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -445,7 +538,10 @@ class _SidebarState extends State<Sidebar> {
             const SizedBox(height: 16),
             Text(
               'Add Management',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey),
             ),
             ListTile(
               leading: Icon(
@@ -453,6 +549,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Banner Ads'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -466,6 +567,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Featured Product Ads'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -476,7 +582,10 @@ class _SidebarState extends State<Sidebar> {
             const SizedBox(height: 16),
             Text(
               'Unlock Phone Data',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey),
             ),
             ListTile(
               leading: Icon(
@@ -484,6 +593,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Add'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -497,6 +611,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('View'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -510,6 +629,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Download Report'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -521,7 +645,10 @@ class _SidebarState extends State<Sidebar> {
             const SizedBox(height: 16),
             Text(
               'Repair Phone Data',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.grey),
             ),
             ListTile(
               leading: Icon(
@@ -529,6 +656,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Add'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -542,6 +674,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('View'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -555,6 +692,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Download Report'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -570,6 +712,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Contact Us'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -583,6 +730,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Privacy Policy'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -596,6 +748,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Terms & Conditions'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -609,6 +766,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Log Out'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -622,6 +784,11 @@ class _SidebarState extends State<Sidebar> {
                 color: Color(0xFF17A589),
               ),
               title: Text('Delete Account'),
+              titleTextStyle: GoogleFonts.dmSans(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
               trailing: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -649,18 +816,19 @@ class _SidebarState extends State<Sidebar> {
       children: [
         Text(
           label,
-          style: TextStyle(color: Colors.grey),
+          style: TextStyle(color: Colors.black),
         ),
         const SizedBox(width: 8),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.8),
+            color: color.withOpacity(0.9),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(
             status,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.w500, fontSize: 10),
           ),
         ),
       ],
@@ -668,34 +836,62 @@ class _SidebarState extends State<Sidebar> {
   }
 
   Widget actionButton(String text, Color color) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        // backgroundColor: color,
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        side: BorderSide(
+          color: Color(0xFF17A589),
+        ), // Border color and width
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12), // Rounded corners
         ),
+        padding: EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 18,
+        ), // Button padding
       ),
       onPressed: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Membership()));
+          context,
+          MaterialPageRoute(builder: (context) => Membership()),
+        );
       },
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: Color(0xFF17A589), // Text color
+        ),
+      ),
     );
   }
 
   Widget actionButton1(String text, Color color) {
-    return ElevatedButton(
+    return OutlinedButton(
       style: ElevatedButton.styleFrom(
-        // backgroundColor: color,
+        side: BorderSide(
+          color: Color(0xFF17A589),
+        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: 5,
+          horizontal: 18,
         ),
       ),
       onPressed: () {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Update()));
       },
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: Color(0xFF17A589), // Text color
+        ),
+      ),
     );
   }
 }

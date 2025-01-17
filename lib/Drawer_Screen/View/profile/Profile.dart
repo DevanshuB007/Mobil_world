@@ -13,8 +13,10 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         scrolledUnderElevation: 0,
+        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -48,7 +50,7 @@ class _ProfileState extends State<Profile> {
                   SizedBox(height: 16),
                   // Name and Email
                   Text(
-                    "GAYTRI MOBILE",
+                    "GAYATRI MOBILE",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   Text(
@@ -105,7 +107,7 @@ class _ProfileState extends State<Profile> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.grey[600])),
-                                    Text("gaytri mobile",
+                                    Text("gayatri mobile",
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
@@ -247,7 +249,7 @@ class _ProfileState extends State<Profile> {
                           Text("Shop Name",
                               style: TextStyle(
                                   fontSize: 14, color: Colors.grey[600])),
-                          Text("gaytri mobile",
+                          Text("gayatri mobile",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -279,7 +281,7 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(
                                 fontSize: 14, color: Colors.grey[600]),
                           ),
-                          Text("gaytri mobile World",
+                          Text("gayatri mobile World",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -293,7 +295,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                   fontSize: 14, color: Colors.grey[600])),
                           Text(
-                            "gaytri mobile",
+                            "gayatri mobile",
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,

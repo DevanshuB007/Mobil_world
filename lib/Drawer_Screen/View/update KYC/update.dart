@@ -31,37 +31,50 @@ class _UpdateState extends State<Update> {
   }
 
   void _showImagePickerOptions(String key) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     showModalBottomSheet(
       context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(),
+      ),
       builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.photo_library, size: 30),
-                    color: const Color(0xFF17A589),
-                    onPressed: () => _pickImage(key, ImageSource.gallery),
-                  ),
-                  const Text('Gallery'),
-                ],
+        return ClipRRect(
+          borderRadius: BorderRadius.vertical(
+              // top: Radius.circular(20), // Match the border radius
               ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.camera_alt, size: 30),
-                    color: const Color(0xFF17A589),
-                    onPressed: () => _pickImage(key, ImageSource.camera),
+          child: Container(
+            height: screenWidth * 0.4,
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ListTile(
+                  leading: Icon(
+                    Icons.photo_library,
+                    size: 30,
+                    color: Color(0xFF17A589),
                   ),
-                  const Text('Camera'),
-                ],
-              ),
-            ],
+                  title: Text(
+                    'Gallery',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  onTap: () => _pickImage(key, ImageSource.gallery),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.camera_alt,
+                    size: 30,
+                    color: Color(0xFF17A589),
+                  ),
+                  title: Text(
+                    'Camera',
+                  ),
+                  onTap: () => _pickImage(key, ImageSource.camera),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -127,132 +140,135 @@ class _UpdateState extends State<Update> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(
-              children: [
-                Expanded(child: _buildUploadBox('Aadhaar Front')),
-                const SizedBox(width: 16),
-                Expanded(child: _buildUploadBox('Aadhaar Back')),
-              ],
-            ),
-            const SizedBox(height: 16),
-            _buildUploadBox('PAN Front'),
-            const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'GST Number',
-                labelStyle:
-                    GoogleFonts.poppins(fontSize: 14, color: Colors.grey[600]),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey[400]!, width: 1.5),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide:
-                      const BorderSide(color: Color(0xFF17A589), width: 1.5),
-                ),
-              ),
-            ),
-            const SizedBox(height: 25),
-            _buildUploadBox('Shop License'),
-            const SizedBox(height: 25),
-            Row(
-              children: [
-                Expanded(child: _buildUploadBox('Add Shop inside image')),
-                const SizedBox(width: 16),
-                Expanded(child: _buildUploadBox('Add Shop outside image')),
-              ],
-            ),
-            const SizedBox(height: 20),
-            // Spacer(),
-            Container(
-              height: 150,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: Colors.grey[400]!,
-                ),
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[300]!,
-                    blurRadius: 10,
-                    offset: const Offset(0, 3),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                children: [
+                  Expanded(child: _buildUploadBox('Aadhaar Front')),
+                  const SizedBox(width: 16),
+                  Expanded(child: _buildUploadBox('Aadhaar Back')),
                 ],
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: true,
-                        onChanged: (value) {
-                          // Handle checkbox change
-                        },
-                      ),
-                      Text(
-                        'I Accept the ',
-                        style: GoogleFonts.poppins(
-                            fontSize: 14, color: Colors.black),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Handle terms & conditions tap
-                        },
-                        child: Text(
-                          'Terms & Conditions.',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: const Color(0xFF17A589),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
+              const SizedBox(height: 16),
+              _buildUploadBox('PAN Front'),
+              const SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'GST Number',
+                  labelStyle: GoogleFonts.poppins(
+                      fontSize: 14, color: Colors.grey[600]),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:
+                        BorderSide(color: Colors.grey[400]!, width: 1.5),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    // height: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Add submission logic
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('KYC Submitted Successfully')),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          // backgroundColor: const Color(0xFF17A589),
-                          backgroundColor: Colors.grey[400],
-                          // shadowColor: Colors.transparent,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide:
+                        const BorderSide(color: Color(0xFF17A589), width: 1.5),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 25),
+              _buildUploadBox('Shop License'),
+              const SizedBox(height: 25),
+              Row(
+                children: [
+                  Expanded(child: _buildUploadBox('Add Shop inside image')),
+                  const SizedBox(width: 16),
+                  Expanded(child: _buildUploadBox('Add Shop outside image')),
+                ],
+              ),
+              const SizedBox(height: 20),
+              // Spacer(),
+              Container(
+                height: 150,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.grey[400]!,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[300]!,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: true,
+                          onChanged: (value) {
+                            // Handle checkbox change
+                          },
+                        ),
+                        Text(
+                          'I Accept the ',
+                          style: GoogleFonts.poppins(
+                              fontSize: 14, color: Colors.black),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            // Handle terms & conditions tap
+                          },
+                          child: Text(
+                            'Terms & Conditions.',
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              color: const Color(0xFF17A589),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
-                        child: const Text(
-                          'Submit',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                      ],
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      // height: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Add submission logic
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('KYC Submitted Successfully')),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            // backgroundColor: const Color(0xFF17A589),
+                            backgroundColor: Colors.grey[400],
+                            // shadowColor: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            'Submit',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

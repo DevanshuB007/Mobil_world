@@ -18,6 +18,17 @@ class MerchantLogin extends StatefulWidget {
 }
 
 class _MerchantLoginState extends State<MerchantLogin> {
+  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  bool _isPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   XFile? _shopImage;
   String selectedState = "Select state";
 
@@ -78,12 +89,13 @@ class _MerchantLoginState extends State<MerchantLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         centerTitle: true,
         scrolledUnderElevation: 0,
         // backgroundColor: Colors.white,
 
-        backgroundColor: Color(0xFFebfaf7),
+        backgroundColor: Color(0xFFffffff),
         elevation: 0,
         title: Text(
           'Merchant Sign Up',
@@ -107,7 +119,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
             children: [
               Text(
                 'PERSONAL DETAILS',
-                style: GoogleFonts.roboto (
+                style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w400, fontSize: 14),
 
                 // style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
@@ -178,9 +190,61 @@ class _MerchantLoginState extends State<MerchantLogin> {
               SizedBox(
                 height: 10,
               ),
+              TextField(
+                controller: password,
+                obscureText: !_isPasswordVisible,
+                onChanged: (value) {
+                  setState(() {});
+                },
+                decoration: InputDecoration(
+                  hintText: "Password",
+                  hintStyle: GoogleFonts.lora(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                  suffixIcon: password.text.isNotEmpty
+                      ? IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        )
+                      : null,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      color: Color(0xFF17A589),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      color: Color(0xFF17A589),
+                    ),
+                  ),
+                ),
+              ),
+              if (password.text.length > 0 && password.text.length < 8)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(
+                    "Password must be at least 8 characters.",
+                    style: TextStyle(color: Colors.red, fontSize: 14),
+                  ),
+                ),
+              SizedBox(
+                height: 10,
+              ),
               Text(
                 'LOCATION DETAILS',
-                style: GoogleFonts.roboto (
+                style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -296,7 +360,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP DETAILS',
-                style: GoogleFonts.roboto (
+                style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -388,7 +452,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'SHOP IMAGE',
-                style: GoogleFonts.roboto (
+                style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -441,14 +505,14 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 children: [
                   Text(
                     'Do you have any referral code?',
-                    style: GoogleFonts.roboto (
+                    style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w400, fontSize: 14),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       'APPLY',
-                      style: GoogleFonts.roboto (
+                      style: GoogleFonts.roboto(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Color(0xFF17A589)),
@@ -460,11 +524,26 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: _controller,
+                      onChanged: (value) {
+                        setState(() {}); // Rebuild to show/hide the close icon
+                      },
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.close),
+                        suffixIcon: _controller.text.isNotEmpty
+                            ? IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  _controller.clear(); // Clear the text field
+                                  setState(
+                                      () {}); // Rebuild to hide the close icon
+                                },
+                              )
+                            : null, // Hide the icon when the text field is empty
                         hintText: "Enter referral code",
                         hintStyle: GoogleFonts.lora(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(
@@ -487,7 +566,7 @@ class _MerchantLoginState extends State<MerchantLogin> {
               ),
               Text(
                 'Please enter Distributor code?',
-                style: GoogleFonts.roboto (
+                style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w400, fontSize: 14),
               ),
               SizedBox(
@@ -497,11 +576,26 @@ class _MerchantLoginState extends State<MerchantLogin> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: _controller1,
+                      onChanged: (value) {
+                        setState(() {}); // Rebuild to show/hide the close icon
+                      },
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.close),
+                        suffixIcon: _controller1.text.isNotEmpty
+                            ? IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  _controller1.clear(); // Clear the text field
+                                  setState(
+                                      () {}); // Rebuild to hide the close icon
+                                },
+                              )
+                            : null, // Hide the icon when the text field is empty
                         hintText: "Enter referral code",
                         hintStyle: GoogleFonts.lora(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(

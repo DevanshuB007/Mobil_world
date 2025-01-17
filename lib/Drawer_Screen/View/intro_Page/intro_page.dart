@@ -188,11 +188,12 @@ class _IntroPageState extends State<IntroPage> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
+                          //_showCustomerDialog;
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Registration()));
-                        }, // _showCustomerDialog
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors
                               .transparent, // Make button background transparent
